@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: httpd
+  labels:
+    httpd: "yes"
+spec:
+  containers:
+  - name: httpd
+    image: httpd
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        preference:
+          matchExpressions:
+          - key: "y-web"
+            operator: In
+            values: 
+            - "yes"
+            - "true"

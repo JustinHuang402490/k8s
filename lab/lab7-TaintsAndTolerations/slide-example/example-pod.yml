@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: example-pod
+  name: example-pod
+spec:
+  tolerations:
+  - key: key1
+    operator: Equal
+    value: value1
+    effect: NoSchedule
+  - key: key1
+    operator: Equal
+    value: value1
+    effect: NoExecute
+  containers:
+  - image: nginx
+    name: example-pod
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

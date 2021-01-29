@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    app: nginx
+  name: example-daemon
+spec:
+  selector:
+    matchLabels:
+      name: example-daemon
+  template:
+     metadata:
+       labels:
+        name: example-daemon
+     spec:   
+       containers:
+         - name: nginx
+           image: nginx
+       affinity:
+         nodeAffinity:
+           preferredDuringSchedulingIgnoredDuringExecution:
+           - weight: 1
+             preference:
+               matchExpressions:
+               - key: x-web
+                 operator: In
+                 values:
+                 - "yes"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

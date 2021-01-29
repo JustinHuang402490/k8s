@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: taint-pod
+  name: taint-pod
+spec:
+  tolerations:
+    - key: "my-taint"
+      operator: Equal
+      effect: NoExecute
+      value: "true"
+  containers:
+  - image: nginx
+    name: taint-pod
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
